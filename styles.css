@@ -311,17 +311,90 @@ body {
 
 .skill-section {
     margin-top: 50px;
-    padding: 2rem;
 }
 
-.skill-frontend img,
-.skill-backend img,
-.skill-other img {
-    height: 50px;
+.skills-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.skill-frontend,
+.skill-backend,
+.skill-other {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.skill-backend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.skill-backend .skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 150px;  /* Fixed width */
+    height: 150px; /* Fixed height */
+    transition: transform 0.3s ease;
+}
+
+.skill-backend .skill img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.skill-backend .skill h4 {
+    text-align: center;
+    margin: 0;
+    font-size: 16px;
+}
+
+.skill-backend .skill:hover {
+    transform: translateY(-5px);
+}
+
+.skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    width: 120px; /* Fixed width for consistency */
+}
+
+.skill img {
     width: 50px;
-    margin: 10px;
+    height: 50px;
+    object-fit: contain;
 }
 
+.skill h4 {
+    text-align: center;
+    margin: 10px 0 0 0;
+    font-size: 16px;
+}
+
+/* Hide inactive sections */
 .active {
     display: none;
 }
@@ -354,22 +427,8 @@ body {
     border-bottom: 2px solid var(--primary-color);
 }
 
-.skill {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 20px;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-}
-
 .skill:hover {
     transform: translateY(-5px);
-}
-
-.skill img {
-    width: 50px;
 }
 
 .skill h3 {
@@ -886,17 +945,57 @@ footer p {
 @media screen and (max-width: 768px) {
     /* Navbar Mobile Styles */
     .navbar {
-        flex-direction: column;
-        height: auto;
-        padding: 10px;
+        padding: 1rem;
     }
 
     .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Hide menu off-screen */
+        height: 100vh;
+        width: 250px;
+        background: white;
         flex-direction: column;
-        gap: 15px;
-        padding: 15px;
-        width: 100%;
-        text-align: center;
+        padding: 50px 20px;
+        transition: 0.3s ease;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        right: 0; /* Show menu */
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+    }
+
+    /* Hamburger Menu */
+    .hamburger {
+        display: block;
+        cursor: pointer;
+        z-index: 100;
+    }
+
+    .hamburger span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: #333;
+        margin: 5px 0;
+        transition: 0.3s;
+    }
+
+    /* Hamburger Animation */
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
     }
 
     /* Hero Section Mobile */
